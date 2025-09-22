@@ -1,0 +1,214 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #4b2e83;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+header.transparent {
+  background-color: rgba(75, 46, 131, 0.8);
+  backdrop-filter: blur(6px);
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navegação desktop */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #ddd;
+}
+
+/* Ícone do menu hamburguer */
+.hamburger {
+  display: none;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger span {
+  background-color: white;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 18px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* Seções */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Cards de livros */
+.livros-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.livro-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.livro-card:hover {
+  transform: translateY(-5px);
+}
+
+.livro-card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Rodapé */
+footer {
+  background-color: #4b2e83;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Efeito de entrada */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade e menu mobile */
+@media (max-width: 768px) {
+  .nav ul {
+    flex-direction: column;
+    background-color: #4b2e83;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    pointer-events: none;
+  }
+
+  .nav ul.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+/*logo*/
+.logo {
+  position: relative;
+  height: 60px; /* altura fixa do header */
+  overflow: visible;
+  z-index: 10;
+}
+
+.logo img {
+  position: absolute;
+  top: -20px; /* sobe o logo acima do header */
+  left: -10px; /* flutua à esquerda */
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* sombra sutil */
+  opacity: 0;
+  animation: logoFadeIn 1s ease-out forwards;
+}
+
+/* Animação de entrada */
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
